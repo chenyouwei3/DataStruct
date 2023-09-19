@@ -2,10 +2,11 @@ package main
 
 import "fmt"
 
-type ListNode struct {
-	data int
-	next *ListNode
-}
+//
+//type ListNode struct {
+//	data int
+//	next *ListNode
+//}
 
 func main() {
 	var head = new(ListNode)
@@ -17,15 +18,23 @@ func main() {
 
 	head.next = node1
 	node1.next = node2
-	InsertAtIndexList(head, 8, 3)
-	//for head != nil {
-	//	fmt.Printf("%d->", head.data)
-	//	head = head.next
-	//}
-	//reverse(head)
+	newnode := &ListNode{data: 8}
+	InsertAtIndexList1(node1, newnode)
+	//InsertAtIndexList2(head, 8, 0)
+	for head != nil {
+		fmt.Printf("%d->", head.data)
+		head = head.next
+	}
+
 }
 
-func InsertAtIndexList(head *ListNode, data int, index int) {
+func InsertAtIndexList1(node0 *ListNode, p *ListNode) {
+	Temp := node0.next //存储中间变量
+	p.next = Temp      //把目标节点的后面连接原来的后面
+	node0.next = p     //把节点node0连接后面
+}
+
+func InsertAtIndexList2(head *ListNode, data int, index int) {
 	newNode := &ListNode{
 		data: data,
 		next: nil,
@@ -40,19 +49,21 @@ func InsertAtIndexList(head *ListNode, data int, index int) {
 	}
 	var pre *ListNode
 	cout := 0
+	//把目标节点位置后面的节点往后面移动
 	for cur != nil && cout < index {
 		//往后面遍历
-		Temp := cur.next
-		pre = cur
-		cur = Temp
+		Temp := cur.next //存储中间变量
+		pre = cur        //移动节点
+		cur = Temp       //移动节点
 		//
 		cout++
 		fmt.Println(pre, "pre") //1
 		fmt.Println(cur, "cur") //2
 	}
+	//添加节点
 	pre.next = newNode
 	newNode.next = cur
-
+	//遍历节点
 	for head != nil {
 		fmt.Printf("-->%d", head.data)
 		head = head.next

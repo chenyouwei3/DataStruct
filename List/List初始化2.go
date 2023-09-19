@@ -8,18 +8,16 @@ import "fmt"
 //}
 
 func main() {
-	var head *ListNode
-	var Head *ListNode
 
 	// 初始化链表
-	head = &ListNode{data: 2}
+	head := &ListNode{data: 2}
 	node1 := &ListNode{data: 5}
 	node2 := &ListNode{data: 3}
 	head.next = node1
 	node1.next = node2
 
 	// 初始化链表
-	Head = &ListNode{data: 5}
+	Head := &ListNode{data: 5}
 	Node1 := &ListNode{data: 6}
 	Node2 := &ListNode{data: 4}
 	Head.next = Node1
