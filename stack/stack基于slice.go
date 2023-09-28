@@ -20,7 +20,7 @@ func main() {
 	//元素出栈
 	pop := stack[len(stack)-1]
 	stack = stack[:len(stack)-1]
-	fmt.Print(pop)
-	fmt.Print(stack)
+	fmt.Println(pop)
+	fmt.Println(stack)
 	fmt.Println(peek)
 }
