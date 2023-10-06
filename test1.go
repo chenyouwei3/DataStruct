@@ -1,35 +1,42 @@
 package main
 
-<<<<<<< HEAD
 import "fmt"
-=======
-import (
-	"fmt"
-)
->>>>>>> 3b1c537 (9/20)
 
 func main() {
-	// 定义一个切片
-	slice := []int{1, 2, 3, 4, 5}
-<<<<<<< HEAD
+	s1 := "babad"
+	fmt.Println(s1[0:1])
+	longestPalindrome1(s1)
+}
 
-	// 要删除的元素的索引
-	index := 2
+func longestPalindrome1(s string) string {
+	n := len(s)
+	if n < 2 {
+		return s
+	}
+	start, maxLen := 0, 1
+	dp := make([][]bool, n)
+	for i := range dp {
+		dp[i] = make([]bool, n)
+		dp[i][i] = true
+	}
+	for L := 2; L <= n; L++ {
+		for i := 0; i <= n-L; i++ {
+			j := i + L - 1 //
+			if s[i] == s[j] && (L == 2 || dp[i+1][j-1]) {
+				dp[i][j] = true
+				if L > maxLen {
+					start = i
+					maxLen = L
+				}
+			}
+		}
+	}
+	return s[start : start+maxLen]
+}
 
-	// 使用切片的切片方式删除元素
-	slice = append(slice[:index], slice[index+1:]...)
-
-	fmt.Println(slice) // [1 2 4 5]
-=======
-	//element := 10
-	// 要删除的元素的索引
-	index := 2
-	//insert := []int{element}
-	// 使用切片的切片方式删除元素
-	slice = append(slice[:index], slice[index+1:]...)
-	//使用切片添加元素
-	//mykou := append(slice[:index], append(insert, slice[index:]...)...)
-	fmt.Println(slice) // [1 2 4 5]
-	//fmt.Println(mykou)
->>>>>>> 3b1c537 (9/20)
+func stringTrue(s1, s2 string) bool {
+	if s1 == s2 {
+		return true
+	}
+	return false
 }

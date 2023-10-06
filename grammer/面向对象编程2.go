@@ -19,11 +19,11 @@ func (s Square) Area() float64 {
 }
 
 // ----------------------------------------------------
-type Circle struct {
+type Circle1 struct {
 	radius float64
 }
 
-func (c Circle) Area() float64 {
+func (c Circle1) Area() float64 {
 	return math.Pi * c.radius * c.radius
 }
 
@@ -34,7 +34,7 @@ func ComputeArea(shaper Shaper) float64 {
 
 func main() {
 	s := Square{5}
-	c := Circle{4}
+	c := Circle1{4}
 	fmt.Println(ComputeArea(s)) // 输出 25
 	fmt.Println(ComputeArea(c)) // 输出 50.26548245743669
 }
