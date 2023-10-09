@@ -15,10 +15,6 @@ func NewTreeNode(v int) *TreeNode {
 	}
 }
 
-func leveOrder(root *TreeNode) []any {
-	queue:=
-}
-
 func main() {
 	n1 := NewTreeNode(1)
 	n2 := NewTreeNode(2)

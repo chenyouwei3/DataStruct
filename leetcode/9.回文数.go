@@ -16,6 +16,7 @@ func isPalindrome(x int) bool {
 	for x != 0 {
 		sum = sum*10 + x%10
 		x /= 10
+		fmt.Println(sum)
 	}
 	if sum == y {
 		return true

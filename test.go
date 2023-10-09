@@ -1,35 +1,14 @@
 package main
 
+import "fmt"
+
 func main() {
-	string1 := "pwwkew"
-	longestPalindrome(string1)
-}
+	str := "Hello, World!"
+	var strSlice []string // 声明一个字符串切片
 
-func longestPalindrome(s string) string {
-	n := len(s)
-	if n < 2 {
-		return s
+	for _, char := range str { // 遍历字符串的每个字符
+		strSlice = append(strSlice, string(char)) // 将每个字符转换为字符串，并添加到切片中
 	}
 
-	start, maxLen := 0, 1
-
-	dp := make([][]bool, n)
-	for i := range dp {
-		dp[i] = make([]bool, n)
-		dp[i][i] = true
-	}
-
-	for L := 2; L <= n; L++ {
-		for i := 0; i < n-L+1; i++ {
-			j := i + L - 1
-			if s[i] == s[j] && (L == 2 || dp[i+1][j-1]) {
-				dp[i][j] = true
-				if L > maxLen {
-					start = i
-					maxLen = L
-				}
-			}
-		}
-	}
-	return s[start : start+maxLen]
+	fmt.Println(strSlice) // 输出切片内容
 }
