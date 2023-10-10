@@ -1,10 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
-	num := []int{1, 2, 3, 4, 5, 6}
-	fmt.Println(num[2:])
-	num = append(num[:1], num[2:]...)
-	fmt.Println(num)
+	fmt.Println(math.MaxInt32)
 }

@@ -1,44 +1,44 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
-	num := "+-12"
+	num := "  +012 123"
 
 	fmt.Println(myAtoi(num), "main")
 }
 
 func myAtoi(s string) int {
-	var number, total, test int
-	var boll bool
-	for _, char := range s {
-		if (char < '0' || char > '9') && char != 32 && char != 45 && char != 43 {
-			return total
-		}
-		if char >= '0' && char <= '9' {
-			number = int(char - '0')
-			total = total*10 + number
-		}
-		if char == 45 {
-			boll = true
-			test++
-		}
-		if char == 43 {
-			test++
-		}
-		if test > 1 {
-			return 0
-		}
+	// 去除前导空格
+	i := 0
+	for i < len(s) && s[i] == ' ' {
+		i++
 	}
-	if boll {
-		total = -total
-	}
-	fmt.Println(total)
-	if total <= -2147483648 || total >= 2147483647 {
-		if total > 0 {
-			return 2147483647
+	// 判断正负号
+	sign := 1
+	if i < len(s) && (s[i] == '+' || s[i] == '-') {
+		if s[i] == '-' {
+			sign = -1
 		}
-		return -2147483648
+		i++
 	}
-	return total
+	// 扫描数字字符
+	num := 0
+	for i < len(s) && s[i] >= '0' && s[i] <= '9' {
+		digit := int(s[i] - '0')
+		// 检查溢出
+		if num > math.MaxInt32/10 || (num == math.MaxInt32/10 && digit > 7) {
+			if sign == 1 {
+				return math.MaxInt32
+			} else {
+				return math.MinInt32
+			}
+		}
+		num = num*10 + digit
+		i++
+	}
+	return num * sign
 }
