@@ -33,6 +33,7 @@ func main() {
 	preorderTraversal(n1)
 }
 
+/* 递归 */
 func preorderTraversal(root *TreeNode) []int {
 	var stack []int
 	var funcpreorder func(*TreeNode)
