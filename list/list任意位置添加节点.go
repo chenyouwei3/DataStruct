@@ -28,6 +28,7 @@ func main() {
 
 }
 
+// InsertAtIndexList1 插在0的后面
 func InsertAtIndexList1(node0 *ListNode, p *ListNode) {
 	Temp := node0.next //存储中间变量
 	p.next = Temp      //把目标节点的后面连接原来的后面

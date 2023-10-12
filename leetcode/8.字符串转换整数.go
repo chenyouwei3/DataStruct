@@ -50,22 +50,18 @@ func myAtoiTest(s string) int {
 			if boll {
 				total = -total
 			}
-
 			return total
 		}
 		if test2 > 0 && (char == 45 || char == 43) || test1 > 1 || (char == 32 && test1 > 0) {
 			if boll {
 				total = -total
 			}
-
 			return total
 		}
 		if char >= '0' && char <= '9' {
 			number = int(char - '0')
-
 			total = total*10 + number
 			test2++
-			fmt.Println(total, "suanfa")
 		}
 		if char == 45 {
 
@@ -75,9 +71,7 @@ func myAtoiTest(s string) int {
 		if char == 43 {
 			test1++
 		}
-		fmt.Println(total)
 	}
-	fmt.Println(total, "TOAL")
 	if boll {
 		total = -total
 	}
