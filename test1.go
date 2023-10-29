@@ -3,7 +3,5 @@ package main
 import "fmt"
 
 func main() {
-	str := "chenyouwei"
-	fmt.Println(string(str[0]))
-
+	fmt.Println(1 % 100)
 }
