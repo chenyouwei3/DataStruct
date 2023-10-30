@@ -3,11 +3,33 @@ package main
 import "fmt"
 
 func main() {
-	string1 := "pwwkew"
-	lengthOfLongestSubstring1(string1)
+	string1 := "chenyouwei3"
+	lengthOfLongestSubstring0(string1)
+	fmt.Println(lengthOfLongestSubstring0(string1))
 }
 
-func lengthOfLongestSubstring1(s string) int {
+// 滑动窗口
+func lengthOfLongestSubstring0(s string) int {
+	if len(s) == 0 {
+		return 0
+	}
+	var freq [127]int
+	result, left, right := 0, 0, -1
+	for left < len(s) {
+		//右指针右移,判断右移后字符是否错误
+		if right+1 < len(s) && freq[s[right+1]] == 0 {
+			freq[s[right+1]]++
+			right++
+		} else {
+			freq[s[left]]--
+			left++
+		}
+		result = max(result, right-left+1)
+	}
+	return result
+}
+
+func lengthOfLongestSubstringTest(s string) int {
 	maxLen, left := 0, 0 // 初始化最长子串长度和窗口起始位置
 
 	charMap := make(map[byte]int) // 用来记录字符最后一次出现的索引
