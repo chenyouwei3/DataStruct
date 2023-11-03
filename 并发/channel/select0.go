@@ -11,7 +11,7 @@ func fn1(ch chan string) {
 }
 
 func fn2(ch chan string) {
-	time.Sleep(time.Second * 1)
+	time.Sleep(time.Second * 2)
 	ch <- "fn2222"
 }
 
