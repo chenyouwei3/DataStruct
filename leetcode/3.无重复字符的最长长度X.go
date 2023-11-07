@@ -20,10 +20,13 @@ func lengthOfLongestSubstring0(s string) int {
 		if right+1 < len(s) && freq[s[right+1]] == 0 {
 			freq[s[right+1]]++
 			right++
+			//fmt.Println("1", "left:", left, "right:", right)
 		} else {
 			freq[s[left]]--
 			left++
+			//fmt.Println("2", "left:", left, "right:", right)
 		}
+
 		result = max(result, right-left+1)
 	}
 	return result

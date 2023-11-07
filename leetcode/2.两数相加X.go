@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+//
 //type ListNode struct {
 //	Val  int
 //	Next *ListNode
@@ -75,10 +76,12 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		}
 		// 计算当前位置上两数之和以及进位数
 		current.Next = &ListNode{Val: (n1 + n2 + carry) % 10}
+		fmt.Println(current.Next.Val)
 		// 将链表指针后移至下一个节点
 		current = current.Next
 		// 计算该位置上的进位数
 		carry = (n1 + n2 + carry) / 10
+		fmt.Println(carry)
 	}
 	return head.Next
 }
