@@ -26,7 +26,6 @@ func lengthOfLongestSubstring0(s string) int {
 			left++
 			//fmt.Println("2", "left:", left, "right:", right)
 		}
-
 		result = max(result, right-left+1)
 	}
 	return result

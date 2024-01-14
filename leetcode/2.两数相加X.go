@@ -12,10 +12,8 @@ func main() {
 	head := &ListNode{Val: 2}
 	node1 := &ListNode{Val: 4}
 	node2 := &ListNode{Val: 3}
-
 	head.Next = node1
 	node1.Next = node2
-
 	Head := &ListNode{Val: 5}
 	Node1 := &ListNode{Val: 6}
 	Node2 := &ListNode{Val: 4}
@@ -40,7 +38,6 @@ func main() {
 	//node5.Next = node6
 	//node6.Next = node7
 	////node7.Next = node8
-
 	//Head := &ListNode{Val: 9}
 	//Node1 := &ListNode{Val: 9}
 	//Node2 := &ListNode{Val: 9}
@@ -74,13 +71,9 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 			n2 = l2.Val
 			l2 = l2.Next
 		}
-		// 计算当前位置上两数之和以及进位数
-		current.Next = &ListNode{Val: (n1 + n2 + carry) % 10}
-		fmt.Println(current.Next.Val)
-		// 将链表指针后移至下一个节点
-		current = current.Next
-		// 计算该位置上的进位数
-		carry = (n1 + n2 + carry) / 10
+		current.Next = &ListNode{Val: (n1 + n2 + carry) % 10} // 计算当前位置上两数之和以及进位数
+		current = current.Next                                // 将链表指针后移至下一个节点
+		carry = (n1 + n2 + carry) / 10                        // 计算该位置上的进位数
 		fmt.Println(carry)
 	}
 	return head.Next

@@ -5,17 +5,17 @@ import "fmt"
 func main() {
 	num := []int{2, 7, 11, 15}
 	target := 9
-	twoSum(num, target)
+	fmt.Println(twoSum(num, target))
 }
 
-func twoSum(nums []int, target int) []int {
+func twoSum(arrary []int, target int) []int {
 	m := make(map[int]int)
-	for i := 0; i < len(nums); i++ {
-		another := target - nums[i]
+	for i := 0; i < len(arrary); i++ {
+		another := target - arrary[i]
 		if _, ok := m[another]; ok {
-			return []int{another, i}
+			return []int{m[another], i}
 		}
-		m[nums[i]] = i
+		m[arrary[i]] = i
 	}
 	return nil
 }
