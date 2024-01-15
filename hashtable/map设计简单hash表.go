@@ -2,13 +2,12 @@ package main
 
 import "fmt"
 
-//设计一个简单的hash表
-//index=hash(key)%capacity
+// 设计一个简单的hash表
 
-type pair struct {
-	key int
-	val string
-}
+//type pair struct {
+//	key int
+//	val string
+//}
 
 /*基于数组简易实现的哈希表*/
 type arrayHashMap struct {
