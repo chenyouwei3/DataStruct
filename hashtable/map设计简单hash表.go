@@ -23,8 +23,8 @@ func newArrayHashMap() *arrayHashMap {
 
 /* 哈希函数*/
 func (a *arrayHashMap) hashFunc(key int) int {
-	index := key % 100 //限制桶的数量
-	return index
+	//index := key % 100 //限制桶的数量
+	return key % 100
 }
 
 /*查询操作*/

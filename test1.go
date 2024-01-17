@@ -8,25 +8,14 @@ type ListNode struct {
 }
 
 func main() {
-	head := &ListNode{Val: 2}
-	node1 := &ListNode{Val: 4}
-	node2 := &ListNode{Val: 3}
-	head.Next = node1
-	node1.Next = node2
-	Head := &ListNode{Val: 5}
-	Node1 := &ListNode{Val: 6}
-	Node2 := &ListNode{Val: 4}
-	Head.Next = Node1
-	Node1.Next = Node2
-	l := head
-	l1 := l
-	l.Val = 1
-	for l1 != nil {
-		fmt.Println(l1.Val)
-		l1 = l1.Next
+	scoreMap := make(map[string]int)
+	scoreMap["张三"] = 90
+	scoreMap["小明"] = 100
+	// 如果key存在ok为true,v为对应的值；不存在ok为false,v为值类型的零值
+	v, ok := scoreMap["张三"]
+	if ok {
+		fmt.Println(v)
+	} else {
+		fmt.Println("查无此人")
 	}
-	//for l != nil {
-	//	fmt.Println(l.Val)
-	//	l = l.Next
-	//}
 }
