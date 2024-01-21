@@ -14,8 +14,8 @@ func lengthOfLongestSubstring0(s string) int {
 	buckets := make(map[byte]int, len(s))
 	for left < len(s) {
 		if index, ok := buckets[s[left]]; ok && index >= right {
-			fmt.Println(index)
-			right = index + 1
+			right = index + 1 //滑动窗口,窗口长度为1
+			fmt.Println(index, right)
 		}
 		buckets[s[left]] = left
 		left++
@@ -25,13 +25,6 @@ func lengthOfLongestSubstring0(s string) int {
 }
 
 func lengthOfLongestSubstringMax(a int, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-
-func max(a, b int) int {
 	if a > b {
 		return a
 	}

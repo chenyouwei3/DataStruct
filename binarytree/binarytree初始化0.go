@@ -1,10 +1,14 @@
 package main
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+import (
+	"fmt"
+)
+
+//type TreeNode struct {
+//	Val   int
+//	Left  *TreeNode
+//	Right *TreeNode
+//}
 
 // NewTreeNode /* 创造新节点 */
 func NewTreeNode(v int) *TreeNode {
@@ -31,4 +35,5 @@ func main() {
 	p.Left = n2
 	/* 删除节点p */
 	n1.Left = n2
+	fmt.Println(levelOrder(n1))
 }

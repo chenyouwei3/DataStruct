@@ -2,7 +2,6 @@ package main
 
 import "fmt"
 
-//
 //type ListNode struct {
 //	data int
 //	next *ListNode
@@ -20,7 +19,7 @@ func main() {
 	node1.next = node2
 	newnode := &ListNode{data: 8}
 	InsertAtIndexList1(node1, newnode)
-	//InsertAtIndexList2(head, 8, 0)
+	//InsertAtIndexListTest(head, 8, 1)
 	for head != nil {
 		fmt.Printf("%d->", head.data)
 		head = head.next
@@ -35,7 +34,7 @@ func InsertAtIndexList1(node0 *ListNode, p *ListNode) {
 	node0.next = p     //把节点node0连接后面
 }
 
-func InsertAtIndexList2(head *ListNode, data int, index int) {
+func InsertAtIndexListTest(head *ListNode, data int, index int) {
 	newNode := &ListNode{
 		data: data,
 		next: nil,

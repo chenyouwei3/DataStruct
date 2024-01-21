@@ -29,6 +29,7 @@ func reverseTest(x int) int {
 	}
 	return isInt64(x)
 }
+
 func isInt64(x int) int {
 	var sum int
 	for x != 0 {
