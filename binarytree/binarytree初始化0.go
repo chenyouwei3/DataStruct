@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 //type TreeNode struct {
 //	Val   int
 //	Left  *TreeNode
@@ -35,5 +31,5 @@ func main() {
 	p.Left = n2
 	/* 删除节点p */
 	n1.Left = n2
-	fmt.Println(levelOrder(n1))
+
 }

@@ -7,11 +7,11 @@ import (
 
 var binaryTreeResSlice []int
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+//type TreeNode struct {
+//	Val   int
+//	Left  *TreeNode
+//	Right *TreeNode
+//}
 
 /* 创造新节点 */
 func MakeTreeNode(v int) *TreeNode {
@@ -28,22 +28,19 @@ func main() {
 	n3 := MakeTreeNode(3)
 	n4 := MakeTreeNode(4)
 	n5 := MakeTreeNode(5)
+	n6 := MakeTreeNode(6)
+	n7 := MakeTreeNode(7)
 	n1.Left = n2
 	n1.Right = n3
 	n2.Left = n4
 	n2.Right = n5
-	/* 插入节点 */
-	p := MakeTreeNode(0)
-	n1.Left = p
-	p.Left = n2
-
-	/* 删除节点p */
-	n1.Left = n2
+	n3.Left = n6
+	n3.Right = n7
 	//fmt.Println(levelOrder(n1)) //1,2,3,4,5
 	//frontOrder(n1) //1,2,4,5,3
 	//inOrder(n1) //4 2 5 1 3
-	backOrder(n1) //4 5 2 3 1
-	fmt.Println(binaryTreeResSlice)
+	//backOrder(n1) //4 5 2 3 1
+	fmt.Println(levelOrder(n1))
 }
 
 /*层序遍历*/
