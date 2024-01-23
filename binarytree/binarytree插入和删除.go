@@ -5,14 +5,14 @@ package main
 //	Left  *TreeNode
 //	Right *TreeNode
 //}
-
-func newTreeNode(v int) *TreeNode {
-	return &TreeNode{
-		Val:   v,
-		Left:  nil,
-		Right: nil,
-	}
-}
+//
+//func newTreeNode(v int) *TreeNode {
+//	return &TreeNode{
+//		Val:   v,
+//		Left:  nil,
+//		Right: nil,
+//	}
+//}
 
 func main() {
 	/*初始化二叉树*/

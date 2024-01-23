@@ -8,31 +8,8 @@ func main() {
 	fmt.Println(twoSum(num, target))
 }
 
-func twoSum(arrary []int, target int) []int {
-	m := make(map[int]int)
-	for i := 0; i < len(arrary); i++ {
-		another := target - arrary[i]
-		if _, ok := m[another]; ok {
-			return []int{m[another], i}
-		}
-		m[arrary[i]] = i
-	}
-	return nil
-}
-
-func twoSumTest0(nums []int, target int) []int {
-	charMap := map[int]int{}
-	for k, v := range nums {
-		if p, ok := charMap[target-v]; ok {
-			fmt.Println(p, k)
-			return []int{p, k}
-		}
-		charMap[v] = k
-	}
-	return nil
-}
-
-func twoSumTest1(nums []int, target int) []int {
+/*暴力法*/
+func twoSumTest(nums []int, target int) []int {
 	var bum []int
 	for i := range nums {
 		for j := range nums {
@@ -42,6 +19,19 @@ func twoSumTest1(nums []int, target int) []int {
 				return bum
 			}
 		}
+	}
+	return nil
+}
+
+/*哈希桶*/
+func twoSum(arrary []int, target int) []int {
+	m := make(map[int]int)
+	for i := 0; i < len(arrary); i++ {
+		another := target - arrary[i]
+		if _, ok := m[another]; ok {
+			return []int{m[another], i}
+		}
+		m[arrary[i]] = i
 	}
 	return nil
 }

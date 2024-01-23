@@ -3,11 +3,11 @@ package main
 import "fmt"
 
 func main() {
-	isPalindrome(121)
-	fmt.Println(isPalindrome(121))
+	isPalindromeNum(121)
+	fmt.Println(isPalindromeNum(121))
 }
 
-func isPalindrome(x int) bool {
+func isPalindromeNum(x int) bool {
 	y := x
 	if x%10 == 0 || x < 0 {
 		return false

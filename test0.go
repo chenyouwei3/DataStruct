@@ -16,7 +16,6 @@ func test(s string) int {
 		}
 		buckets[s[left]] = left
 		left++
-
 	}
 
 }

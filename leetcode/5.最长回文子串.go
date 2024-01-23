@@ -3,12 +3,37 @@ package main
 import "fmt"
 
 func main() {
-	resString := "babad"
-	fmt.Println(longestPalindrome1(resString))
+	str := "babad"
+	fmt.Println(longestPalindromeDemo(str))
 }
 
-/*滑动窗口*/
-func longestPalindrome1(s string) string {
+func longestPalindromeDemo(s string) string {
+	dp := make([][]bool, len(s))
+	result := s[0:1] //初始化结果(最小的回文就是单个字符)
+	for i := 0; i < len(s); i++ {
+		dp[i] = make([]bool, len(s))
+		dp[i][i] = true // 根据case 1 初始数据
+	}
+	for length := 2; length <= len(s); length++ { //长度固定，不断移动起点
+		for start := 0; start < len(s)-length+1; start++ { //长度固定，不断移动起点
+			end := start + length - 1
+			if s[start] != s[end] { //首尾不同则不可能为回文
+				continue
+			} else if length < 3 {
+				dp[start][end] = true //即case 2的判断
+			} else {
+				dp[start][end] = dp[start+1][end-1] //状态转移
+			}
+			if dp[start][end] && (end-start+1) > len(result) { //记录最大值
+				result = s[start : end+1]
+			}
+		}
+	}
+	return result
+}
+
+// 中心扩散，时间复杂度 O(n^2)，空间复杂度 O(1)
+func longestPalindrome2(s string) string {
 	if len(s) == 0 {
 		return ""
 	}
@@ -33,28 +58,33 @@ func longestPalindrome1(s string) string {
 	return s[pl : pr+1]
 }
 
-func longestPalindrome(s string) string {
-	n := len(s)
-	if n < 2 {
-		return s
-	}
-	start, maxLen := 0, 1
-	dp := make([][]bool, n)
-	for i := range dp {
-		dp[i] = make([]bool, n)
-		dp[i][i] = true
-	}
-	for L := 2; L <= n; L++ {
-		for i := 0; i < n-L+1; i++ {
-			j := i + L - 1
-			if s[i] == s[j] && (L == 2 || dp[i+1][j-1]) {
-				dp[i][j] = true
-				if L > maxLen {
-					start = i
-					maxLen = L
-				}
-			}
+/*判断回文子串*/
+func isPalindromeString(s string) bool {
+	left, right := 0, len(s)-1
+	for left < right {
+		if s[left] != s[right] {
+			return false
 		}
+		left++
+		right--
 	}
-	return s[start : start+maxLen]
+	return true
+}
+
+/*求字符串的子串*/
+func stringOfSon(s string) []string {
+	var result []string
+	stringOfSon2(s, "", 0, &result)
+	return result
+}
+
+func stringOfSon2(s, currentSubset string, index int, result *[]string) {
+	if index == len(s) {
+		*result = append(*result, currentSubset)
+		return
+	}
+	// 不包含当前字符的情况
+	stringOfSon2(s, currentSubset, index+1, result)
+	// 包含当前字符的情况
+	stringOfSon2(s, currentSubset+string(s[index]), index+1, result)
 }
