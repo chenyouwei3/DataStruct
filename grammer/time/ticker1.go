@@ -6,7 +6,6 @@ import (
 )
 
 func main() {
-
 	ticker := time.NewTicker(2 * time.Second)
 	ch := make(chan bool)
 	go func(ticker *time.Ticker) {

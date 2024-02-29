@@ -42,7 +42,6 @@ func frontOrderTraversal(root *TreeNode) []int {
 		if node == nil {
 			return
 		}
-		fmt.Println(maxDepth(node), node.Val)
 		stack = append(stack, node.Val)
 		frontOrder(node.Left)
 		frontOrder(node.Right)

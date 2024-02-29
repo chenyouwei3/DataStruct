@@ -12,12 +12,12 @@ func main() {
 	head.data = 1
 	var node1 = new(ListNode)
 	node1.data = 2
-	//var node2 = new(ListNode)
-	//node2.data = 3
+	var node2 = new(ListNode)
+	node2.data = 3
 
 	head.next = node1
-	//node1.next = node2
-	//show3333(head)
+
+	node1.next = node2
 	reverse(head)
 
 }

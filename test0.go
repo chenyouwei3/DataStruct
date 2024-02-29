@@ -1,21 +1,31 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
-func main() {
-	str := "chenyouwei3"
-	fmt.Println(test(str))
+func consumer(ch <-chan int) {
+	for num := range ch {
+		fmt.Println("收到消息:", num)
+	}
 }
 
-func test(s string) int {
-	left, right, res := 0, 0, 0
-	buckets := make(map[byte]int, len(s))
-	for left < len(s) {
-		if index, ok := buckets[s[left]]; ok && index >= right {
-			right = index + 1
-		}
-		buckets[s[left]] = left
-		left++
+func producer(ch chan<- int) {
+	for i := 0; i < 5; i++ {
+		fmt.Println("Producer: sending", i)
+		ch <- i // 发送数据到通道
+		time.Sleep(time.Second)
 	}
+	close(ch) // 关闭通道
+}
 
+func main() {
+	ch := make(chan int) // 创建一个整数类型的通道
+	// 启动生产者goroutine
+	go producer(ch)
+	// 启动消费者goroutine
+	go consumer(ch)
+	// 等待一段时间，确保生产者和消费者有足够的时间执行
+	time.Sleep(7 * time.Second)
 }

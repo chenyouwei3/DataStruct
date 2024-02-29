@@ -9,8 +9,7 @@ func main() {
 func maxArea(height []int) int {
 	left, area, res := 0, 0, 0 // 初始化左边界、面积和结果为0
 	right := len(height) - 1   // 初始化右边界为数组最后一个元素的索引
-
-	for left < right { // 循环直到左边界达到右边界
+	for left < right {         // 循环直到左边界达到右边界
 		area = (right - left) * minTest(height[left], height[right]) // 计算当前容器的面积
 		if height[left] < height[right] {                            // 如果左边界的高度小于右边界的高度
 			left++ // 左边界向右移动

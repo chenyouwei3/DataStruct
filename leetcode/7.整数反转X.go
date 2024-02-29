@@ -5,9 +5,8 @@ import (
 )
 
 func main() {
-	x := -15344564654654
-	sum := reverse(x)
-	fmt.Println(sum)
+	x := -15344564
+	fmt.Println(reverse(x))
 }
 
 func reverse(x int) int {
@@ -19,7 +18,6 @@ func reverse(x int) int {
 		sum = sum*10 + x%10
 		x = x / 10
 	}
-	fmt.Println(sum)
 	return sum
 }
 
