@@ -14,6 +14,7 @@ func main() {
 	node2 := &ListNode{Val: 3}
 	head.Next = node1
 	node1.Next = node2
+
 	Head := &ListNode{Val: 5}
 	Node1 := &ListNode{Val: 6}
 	Node2 := &ListNode{Val: 4}

@@ -1,22 +1,25 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
+func main() {
+	arr := []int{9, 5, 1, 4, 8, 2, 7, 3, 6}
+	fmt.Println(quickSort(arr))
+}
 func quickSort(arr []int) []int {
 	if len(arr) <= 1 {
 		return arr
 	}
-	// 随机选择基准值
-	pivotIndex := 4
+	// 选择第一个元素作为基准值
+	pivotIndex := len(arr)
 	pivot := arr[pivotIndex]
-	// 将基准值移到数组末尾
-	arr[pivotIndex], arr[len(arr)-1] = arr[len(arr)-1], arr[pivotIndex]
 	// 定义左右两个子数组
 	var left, right []int
 	// 遍历数组，将比基准值小的元素放入left数组，将比基准值大的元素放入right数组
-	for _, v := range arr[:len(arr)-1] {
+	for i, v := range arr {
+		if i == pivotIndex {
+			continue // 跳过基准值的比较
+		}
 		if v <= pivot {
 			left = append(left, v)
 		} else {
@@ -29,11 +32,4 @@ func quickSort(arr []int) []int {
 	// 合并左右子数组和基准值
 	sorted := append(append(left, pivot), right...)
 	return sorted
-}
-
-func main() {
-	arr := []int{3, 6, 8, 10, 1, 2, 1}
-	fmt.Println("Original array:", arr)
-	sorted := quickSort(arr)
-	fmt.Println("Sorted array:", sorted)
 }

@@ -15,5 +15,13 @@ func main() {
 
 	/* 默认上限为 len(s)*/ /*[3 4 5 6 7 8]*/
 	fmt.Println("numbers[4:] ==", numbers[3:])
+}
 
+func deletedSlice() {
+	slice := []int{1, 2, 3, 4, 5}
+	// 要删除的元素的索引
+	index := 4
+	// 使用切片的切片方式删除元素
+	slice = append(slice[:index], slice[index+1:]...)
+	fmt.Println(slice)
 }
