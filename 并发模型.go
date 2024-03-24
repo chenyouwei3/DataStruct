@@ -1,9 +1,7 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
 	"net"
 	"sync"
 )
@@ -43,7 +41,7 @@ func main() {
 	var wg sync.WaitGroup
 	wg.Add(workerCount)
 	for i := 0; i < workerCount; i++ {
-		go worker(taskQueue, done, &wg)
+		go worker(taskQueue, &wg)
 	}
 	// 等待工作 goroutine 完成处理
 	go func() {
@@ -56,16 +54,17 @@ func main() {
 }
 
 // 工作协程处理任务
-func worker(taskQueue <-chan Task, done chan<- bool, wg *sync.WaitGroup) {
+func worker(taskQueue <-chan Task, wg *sync.WaitGroup) {
 	for task := range taskQueue {
-		processTask(task.Address, task.ProcessFunc)
+		processTask(task, task.ProcessFunc)
 	}
 	wg.Done()
 }
 
 // 模拟处理任务
-func processTask(Address string, Func func(conn net.Conn)) {
-	listen, err := net.Listen("tcp", Address) //代表监听的地址端口
+func processTask(task Task, Func func(conn net.Conn)) {
+	listen, err := net.Listen("tcp", task.Address) //代表监听的地址端口
+	defer listen.Close()
 	if err != nil {
 		fmt.Println("listen failed, err:", err)
 		return
@@ -80,62 +79,4 @@ func processTask(Address string, Func func(conn net.Conn)) {
 		fmt.Println("连接建立成功.....")
 		go Func(conn)
 	}
-}
-
-func Test1(conn net.Conn) {
-	defer func(conn net.Conn) {
-		err := conn.Close()
-		if err != nil {
-			log.Println(err.Error())
-		}
-	}(conn)
-	for {
-		reader := bufio.NewReader(conn) // 创建一个带缓冲的读取器，用于从连接中读取数据
-		var buf [128]byte               // 创建一个长度为 128 的字节数组，用于存储读取的数据
-		n, err := reader.Read(buf[:])   // 从读取器中读取数据，并将数据存储到 buf 中，同时返回读取的字节数和可能的错误
-		if err != nil {                 // 若读取过程中发生错误
-			fmt.Println("read from client failed, err:", err) // 打印错误信息
-			break                                             // 结束循环，退出处理函数
-		}
-		recvStr := string(buf[:n])              // 将读取的字节转换为字符串
-		fmt.Println("收到client端发来的数据：", recvStr) // 打印接收到的字符串数据
-		conn.Write([]byte(recvStr))             // 将接收到的数据通过连接发送回客户端
-	}
-	fmt.Println(conn, "1")
-}
-
-func Test2(conn net.Conn) {
-	defer conn.Close() // 关闭连接
-	for {
-		reader := bufio.NewReader(conn) // 创建一个带缓冲的读取器，用于从连接中读取数据
-		var buf [128]byte               // 创建一个长度为 128 的字节数组，用于存储读取的数据
-		n, err := reader.Read(buf[:])   // 从读取器中读取数据，并将数据存储到 buf 中，同时返回读取的字节数和可能的错误
-		if err != nil {                 // 若读取过程中发生错误
-			fmt.Println("read from client failed, err:", err) // 打印错误信息
-			break                                             // 结束循环，退出处理函数
-		}
-		recvStr := string(buf[:n])              // 将读取的字节转换为字符串
-		fmt.Println("收到client端发来的数据：", recvStr) // 打印接收到的字符串数据
-
-		conn.Write([]byte(recvStr)) // 将接收到的数据通过连接发送回客户端
-	}
-	fmt.Println(conn, "2")
-}
-
-func Test3(conn net.Conn) {
-	defer conn.Close() // 关闭连接
-	for {
-		reader := bufio.NewReader(conn) // 创建一个带缓冲的读取器，用于从连接中读取数据
-		var buf [128]byte               // 创建一个长度为 128 的字节数组，用于存储读取的数据
-		n, err := reader.Read(buf[:])   // 从读取器中读取数据，并将数据存储到 buf 中，同时返回读取的字节数和可能的错误
-		if err != nil {                 // 若读取过程中发生错误
-			fmt.Println("read from client failed, err:", err) // 打印错误信息
-			break                                             // 结束循环，退出处理函数
-		}
-		recvStr := string(buf[:n])              // 将读取的字节转换为字符串
-		fmt.Println("收到client端发来的数据：", recvStr) // 打印接收到的字符串数据
-
-		conn.Write([]byte(recvStr)) // 将接收到的数据通过连接发送回客户端
-	}
-	fmt.Println(conn, "3")
 }

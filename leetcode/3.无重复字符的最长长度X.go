@@ -23,6 +23,7 @@ func lengthOfLongestSubstring0(s string) int {
 		buckets[s[left]] = left                            // 将当前字符及其索引位置添加到字典中
 		left++                                             // 左边界向右移动
 		res = lengthOfLongestSubstringMax(res, left-right) // 更新最长子串的长度
+		fmt.Println("res:", res, "left-right", left-right)
 	}
 	return res // 返回最长不重复子串的长度
 }

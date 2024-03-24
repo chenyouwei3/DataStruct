@@ -26,11 +26,9 @@ func threeSum2(nums []int) [][]int {
 			fmt.Println(total)
 			switch {
 			case total < 0:
-				fmt.Println("<0", res)
 				left++
 			case total > 0:
 				right--
-				fmt.Println(">0", res)
 			case total == 0:
 				res = append(res, []int{nums[i], nums[left], nums[right]})
 				fmt.Println("==0", res)
@@ -55,7 +53,6 @@ func threeSum(nums []int) [][]int {
 	results := [][]int{}
 	n := len(nums)
 	sort.Ints(nums) // 排序使得相同的元素相邻
-
 	for i := 0; i < n-2; i++ {
 		if i > 0 && nums[i] == nums[i-1] {
 			continue // 去除重复的第一个元素
@@ -65,7 +62,6 @@ func threeSum(nums []int) [][]int {
 			complement := -nums[i] - nums[j]
 			if seen[complement] {
 				results = append(results, []int{nums[i], complement, nums[j]})
-
 				for j < n-1 && nums[j] == nums[j+1] {
 					j++ // 去除重复的第二个元素
 				}

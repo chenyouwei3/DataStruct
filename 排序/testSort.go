@@ -7,16 +7,16 @@ func main() {
 	testSort0(arr)
 	testSort1(arr)
 	testSort2(arr)
-	//fmt.Println(testSort3(arr))
+	fmt.Println(testSort3(arr))
 }
 
 // 冒泡
 func testSort0(arr []int) {
 	length := len(arr)
 	for i := 0; i < length; i++ {
-		for j := 0; j < length-i-1; j++ {
+		for j := 0; j < length-1-i; j++ {
 			if arr[j] > arr[j+1] {
-				arr[j+1], arr[j] = arr[j], arr[j+1]
+				arr[j], arr[j+1] = arr[j+1], arr[j]
 			}
 		}
 	}
@@ -38,11 +38,12 @@ func testSort1(arr []int) {
 	fmt.Println(arr)
 }
 
+// 插入
 func testSort2(arr []int) {
 	for i := 1; i < len(arr); i++ {
 		key := arr[i]
 		j := i - 1
-		for ; j >= 0 && arr[j] > key; j-- {
+		for ; arr[j] > key && j >= 0; j-- {
 			arr[j+1] = arr[j]
 		}
 		arr[j+1] = key
@@ -50,19 +51,19 @@ func testSort2(arr []int) {
 	fmt.Println(arr)
 }
 
+// 快排
 func testSort3(arr []int) []int {
 	if len(arr) < 1 {
 		return arr
 	}
-	//基准值
-	provIndex := len(arr) - 1
-	index := arr[provIndex]
+	proIndex := len(arr) / 2
+	pro := arr[proIndex]
 	var left, right []int
 	for i, v := range arr {
-		if i == index {
+		if i == proIndex {
 			continue
 		}
-		if v <= index {
+		if v <= pro {
 			left = append(left, v)
 		} else {
 			right = append(right, v)
@@ -70,5 +71,6 @@ func testSort3(arr []int) []int {
 	}
 	left = testSort3(left)
 	right = testSort3(right)
-	return nil
+	return append(append(left, pro), right...)
+	//return nil
 }

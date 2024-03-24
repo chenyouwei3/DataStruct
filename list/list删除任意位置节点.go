@@ -25,7 +25,6 @@ func DeletedNode(nodeT *ListNode) {
 	if nodeT.next == nil {
 		return
 	}
-	Temp1 := nodeT.next
-	Temp2 := Temp1.next
+	Temp2 := nodeT.next.next
 	nodeT.next = Temp2
 }

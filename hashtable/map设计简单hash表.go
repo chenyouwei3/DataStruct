@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 // 设计一个简单的hash表
-
+//
 //type pair struct {
 //	key int
 //	val string

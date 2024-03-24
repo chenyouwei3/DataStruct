@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+//
 //type ListNode struct {
 //	data int
 //	next *ListNode

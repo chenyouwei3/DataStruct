@@ -14,7 +14,7 @@ func main() {
 	fmt.Println("numbers[:3] ==", numbers[:3])
 
 	/* 默认上限为 len(s)*/ /*[3 4 5 6 7 8]*/
-	fmt.Println("numbers[4:] ==", numbers[3:])
+	fmt.Println("numbers[3:] ==", numbers[3:])
 }
 
 func deletedSlice() {
