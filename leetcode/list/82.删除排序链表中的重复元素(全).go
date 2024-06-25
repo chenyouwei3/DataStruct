@@ -2,10 +2,10 @@ package main
 
 import "fmt"
 
-//type ListNode struct {
-//	Val  int
-//	Next *ListNode
-//}
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
 
 func main() {
 	var head = new(ListNode)
@@ -37,19 +37,21 @@ func main() {
 }
 
 func deleteDuplicates1(head *ListNode) *ListNode {
-	newHead := &ListNode{Val: 0, Next: head}
-	pre := newHead
-	cur := head
-	temp := head.Val
-	cur = cur.Next
-	for cur != nil {
-		if cur.Val == temp {
-			pre.Next = cur.Next
-		} else {
-			pre = cur
-			temp = cur.Val
-		}
-		cur = cur.Next
+	dummy := &ListNode{
+		Val:  0,
+		Next: head,
 	}
-	return newHead.Next
+	head = dummy
+	var rmVal int
+	for head.Next != nil && head.Next.Next != nil {
+		if head.Next.Val == head.Next.Next.Val {
+			rmVal = head.Next.Val
+			for head.Next != nil && head.Next.Val == rmVal {
+				head.Next = head.Next.Next
+			}
+		} else {
+			head = head.Next
+		}
+	}
+	return dummy.Next
 }

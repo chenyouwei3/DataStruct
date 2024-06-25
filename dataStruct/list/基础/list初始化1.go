@@ -2,11 +2,10 @@ package main
 
 import "fmt"
 
-//
-//type ListNode struct {
-//	data int
-//	next *ListNode
-//}
+type ListNode struct {
+	data int
+	next *ListNode
+}
 
 // 遍历列表
 func showNode(p *ListNode) {

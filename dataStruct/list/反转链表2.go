@@ -2,10 +2,10 @@ package main
 
 import "fmt"
 
-//type ListNode struct {
-//	Next *ListNode
-//	Val  int
-//}
+type ListNode struct {
+	Next *ListNode
+	Val  int
+}
 
 func main() {
 	var head = new(ListNode)

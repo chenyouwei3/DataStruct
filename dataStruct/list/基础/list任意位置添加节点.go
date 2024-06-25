@@ -2,11 +2,6 @@ package main
 
 import "fmt"
 
-//type ListNode struct {
-//	data int
-//	next *ListNode
-//}
-
 func main() {
 	var head = new(ListNode)
 	head.data = 1

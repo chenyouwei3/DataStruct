@@ -1,11 +1,9 @@
 package main
 
-import (
-	"fmt"
-	"reflect"
-)
+import "fmt"
 
 func main() {
-	var mike interface{}
-	fmt.Println(reflect.TypeOf(mike))
+	var testslice = []int{}
+	testslice = append(testslice, 1)
+	fmt.Println(cap(testslice))
 }

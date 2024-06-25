@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	nums1 := []int{1, 2, 3, 0, 0, 0}
 	nums2 := []int{2, 5, 6}
@@ -7,15 +9,23 @@ func main() {
 }
 
 func merge(nums1 []int, m int, nums2 []int, n int) {
-	nums1 = nums1[:m]
-	for i := 0; i < n; i++ {
-		nums1 = append(nums1, nums2[i])
-	}
-	for i := 0; i < len(nums1); i++ {
-		for j := 0; j < len(nums1)-i-1; j++ {
-			if nums1[j] > nums1[j+1] {
-				nums1[j], nums1[j+1] = nums1[j+1], nums1[j]
-			}
+	p1 := m - 1
+	p2 := n - 1
+	p := m + n - 1
+	for p1 >= 0 && p2 >= 0 {
+		if nums1[p1] > nums2[p2] {
+			nums1[p] = nums1[p1]
+			p1--
+		} else {
+			nums1[p] = nums2[p2]
+			p2--
 		}
+		p--
 	}
+	for p2 >= 0 {
+		nums1[p] = nums2[p2]
+		p--
+		p2--
+	}
+	fmt.Println(nums1)
 }

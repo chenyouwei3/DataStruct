@@ -16,6 +16,5 @@ func swapPairs(head *ListNode) *ListNode {
 		node0 = node1
 		node1 = node3
 	}
-
 	return newNode.Next
 }

@@ -1,6 +1,2 @@
-github.com/jinzhu/inflection v1.0.0 h1:K317FqzuhWc8YvSVlFMCCUb36O/S9MCKRDI7QkRKD/E=
-github.com/jinzhu/inflection v1.0.0/go.mod h1:h+uFLlag+Qp1Va5pdKtLDYj+kHp5pxUVkryuEj+Srlc=
-github.com/jinzhu/now v1.1.5 h1:/o9tlHleP7gOFmsnYNz3RGnqzefHA47wQpKrrdTIwXQ=
-github.com/jinzhu/now v1.1.5/go.mod h1:d3SSVoowX0Lcu0IBviAWJpolVfI5UJVZZ7cO71lE/z8=
-gorm.io/gorm v1.25.9 h1:wct0gxZIELDk8+ZqF/MVnHLkA1rvYlBWUMv2EdsK1g8=
-gorm.io/gorm v1.25.9/go.mod h1:hbnx/Oo0ChWMn1BIhpy1oYozzpM15i4YPuHDmfYtwg8=
+github.com/chenyouwei3/threadpool v0.0.0-20240612062137-aa40e90d4ac4 h1:7jKw+dRXZi5mt4IkC09mmX8tkVksq+dUp/UrK/aogYY=
+github.com/chenyouwei3/threadpool v0.0.0-20240612062137-aa40e90d4ac4/go.mod h1:uPpQzr7cE3so7jy/fv+qImJJn9qxTDKuRml4+Jg94sE=

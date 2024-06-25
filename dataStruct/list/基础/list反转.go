@@ -29,6 +29,17 @@ func main() {
 func reverse(head *ListNode) *ListNode {
 	var pre *ListNode
 	for head != nil {
+		temp := head.next //中间变量
+		head.next = pre   //移动方向
+		pre = head        //更新节点
+		head = temp       //更新节点
+	}
+	return pre
+}
+
+func reverseTest(head *ListNode) *ListNode {
+	var pre *ListNode
+	for head != nil {
 		temp := head.next
 		head.next = pre
 		pre = head

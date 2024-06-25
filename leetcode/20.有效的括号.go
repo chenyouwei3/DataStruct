@@ -1,37 +1,34 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	strs := "{[]}"
+	strs := "()[]{}"
 	fmt.Println("res", isValid(strs))
 }
 
 func isValid(s string) bool {
-	if len(s)%2 == 1 {
+	if len(s)%2 != 0 {
 		return false
 	}
-	fmt.Println(s[len(s)-1])
-	bucket := map[string]string{
-		")": "(",
-		"}": "{",
-		"]": "[",
+	pairs := map[byte]byte{
+		')': '(',
+		']': '[',
+		'}': '{',
 	}
-	buckets := map[string]string{
-		"(": ")",
-		"{": "}",
-		"[": "]",
-	}
-	var temp string
-	for i, v := range s {
-		str := s[len(s)-i-1]
-		fmt.Println("str", string(str), "v", buckets[string(v)])
-		if i%2 == 1 && string(str) != buckets[string(v)] {
-			if bucket[string(v)] != temp {
+	stack := []byte{}
+	for i := 0; i < len(s); i++ {
+		if pairs[s[i]] > 0 {
+			if len(stack) == 0 || stack[len(stack)-1] != pairs[s[i]] {
 				return false
 			}
+			stack = stack[:len(stack)-1] //删除一个
+			fmt.Println(stack)
+		} else {
+			stack = append(stack, s[i])
 		}
-		temp = string(v)
 	}
-	return true
+	return len(stack) == 0
 }

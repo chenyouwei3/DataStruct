@@ -66,7 +66,6 @@ func frontOrder(node *TreeNode) {
 	}
 	// 访问优先级:根节点->左子树->右子树
 	binaryTreeResSlice = append(binaryTreeResSlice, node.Val)
-	fmt.Println(binaryTreeResSlice)
 	frontOrder(node.Left)
 	frontOrder(node.Right)
 }

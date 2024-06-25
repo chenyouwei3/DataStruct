@@ -28,12 +28,11 @@ func main() {
 
 func deleteDuplicates2(head *ListNode) *ListNode {
 	cur := head
-	for cur.Next != nil {
-		if cur.Next.Val == cur.Val {
+	for cur != nil {
+		for cur.Next != nil && cur.Val == cur.Next.Val {
 			cur.Next = cur.Next.Next
-		} else {
-			cur = cur.Next
 		}
+		cur = cur.Next
 	}
 	return head
 }
