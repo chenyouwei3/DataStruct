@@ -2,10 +2,28 @@ package main
 
 import "fmt"
 
-func main() {
-	fmt.Println(removeKdigits("456129",3))
+type Test struct {
+	Name string
+	why  string
 }
 
-func removeKdigits(num string, k int) string {
-	if
+type newTest struct {
+	nickname string
+	test     Test
 }
+
+func main() {
+	test1 := &Test{
+		Name: "111",
+		why:  "22",
+	}
+	test2 := &newTest{
+		nickname: "333",
+		test:     *test1,
+	}
+	fmt.Println(test2.test.why)
+}
+
+//func removeKdigits(num string, k int) string {
+//	if
+//}
