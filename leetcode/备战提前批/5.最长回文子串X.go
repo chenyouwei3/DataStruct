@@ -4,6 +4,7 @@ import "fmt"
 
 func main() {
 	str := "babad"
+	fmt.Println(str[0])
 	fmt.Println(longestPalindromeDemo(str))
 }
 
@@ -16,7 +17,7 @@ func longestPalindromeDemo(s string) string {
 		dp[i][i] = true // 根据case     1 初始数据
 	}
 	for length := 2; length <= len(s); length++ { //长度固定，不断移动起点
-		for start := 0; start < len(s)-length+1; start++ { //长度固定，不断移动起点
+		for start := 0; start <= len(s)-length; start++ { //长度固定，不断移动起点
 			end := start + length - 1
 			if s[start] != s[end] { //首尾不同则不可能为回文
 				continue
@@ -25,7 +26,7 @@ func longestPalindromeDemo(s string) string {
 			} else {
 				dp[start][end] = dp[start+1][end-1] //状态转移
 			}
-			if dp[start][end] && (end-start+1) > len(result) { //记录最大值
+			if dp[start][end] && (end-start) >= len(result) { //记录最大值
 				result = s[start : end+1]
 			}
 		}

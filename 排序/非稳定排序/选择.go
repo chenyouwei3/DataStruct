@@ -2,9 +2,14 @@ package main
 
 import "fmt"
 
+// 时间复杂度
+// best      O(n^2)
+// average   O(n^2)
+// worst     O(n^2)
+
+// 空间复杂度O(1)
 func main() {
 	arr := []int{6, 7, 5, 1, 6, 4, 9, 8, 5, 2, 4, 7, 2}
-	//fmt.Println(selectSort(arr))
 	selectsort(arr)
 }
 func selectsort(arr []int) {

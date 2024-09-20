@@ -2,6 +2,14 @@ package main
 
 import "fmt"
 
+// 时间复杂度
+// best           O(n*log n)
+// average        O(n*log n)
+// worst          O(n^2)
+
+// 空间复杂度
+// best/average   O(log n)
+// worst          O(n)
 func main() {
 	arr := []int{9, 5, 1, 4, 8, 2, 7, 3, 6}
 	fmt.Println(quickSort(arr))

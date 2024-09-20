@@ -1,4 +1,4 @@
-package binaryTree
+package main
 
 type TreeNode struct {
 	Val   int
@@ -6,7 +6,7 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func inorderNewTreeNode(v int) *TreeNode {
+func newTreeNode(v int) *TreeNode {
 	return &TreeNode{
 		Val:   v,
 		Left:  nil,

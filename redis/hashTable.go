@@ -2,52 +2,51 @@ package main
 
 import "fmt"
 
-/*基于数组简易实现的哈希表*/
+type pair struct {
+	key   int
+	value string
+}
+
 type arrayHashMap struct {
 	buckets []*pair
 }
 
-/*初始化哈希表*/
 func newArrayHashMap() *arrayHashMap {
-	//初始化桶,包含多少个桶
-	buckets := make([]*pair, 100)
-	return &arrayHashMap{buckets: buckets}
+	return &arrayHashMap{buckets: make([]*pair, 100)}
 }
 
-/* 哈希函数*/
+// 哈希函数
 func (a *arrayHashMap) hashFunc(key int) int {
-	//index := key % 100 //限制桶的数量
 	return key % 100
 }
 
-/*查询操作*/
+// 查找
 func (a *arrayHashMap) get(key int) string {
 	index := a.hashFunc(key)
 	pair := a.buckets[index]
 	if pair == nil {
 		return "not found"
 	}
-	return pair.val
+	return pair.value
 }
 
-/*添加操作*/
+// 增加
 func (a *arrayHashMap) add(key int, value string) {
 	pair := &pair{
-		key: key,
-		val: value,
+		key:   key,
+		value: value,
 	}
 	index := a.hashFunc(key)
 	a.buckets[index] = pair
 }
 
-/*删除操作*/
+// 删除
 func (a *arrayHashMap) deleted(key int) {
 	index := a.hashFunc(key)
-	//重置为空相当于删除
 	a.buckets[index] = nil
 }
 
-/*获取所有键值对*/
+// 获取所有键值对
 func (a *arrayHashMap) getPairs() []*pair {
 	var pairs []*pair
 	for _, pair := range a.buckets {
@@ -58,8 +57,8 @@ func (a *arrayHashMap) getPairs() []*pair {
 	return pairs
 }
 
-/*获取所有key*/
-func (a *arrayHashMap) getKey() []int {
+// 获取所有key
+func (a *arrayHashMap) getKeys() []int {
 	var keys []int
 	for _, pair := range a.buckets {
 		if pair != nil {
@@ -69,12 +68,12 @@ func (a *arrayHashMap) getKey() []int {
 	return keys
 }
 
-/*获取所有value*/
-func (a *arrayHashMap) getValue() []string {
+// 获取所有value
+func (a *arrayHashMap) getValues() []string {
 	var strings []string
 	for _, pair := range a.buckets {
 		if pair != nil {
-			strings = append(strings, pair.val)
+			strings = append(strings, pair.value)
 		}
 	}
 	return strings
@@ -84,7 +83,7 @@ func (a *arrayHashMap) getValue() []string {
 func (a *arrayHashMap) print() {
 	for _, pair := range a.buckets {
 		if pair != nil {
-			fmt.Println(pair.key, "->", pair.val)
+			fmt.Println(pair.key, "->", pair.value)
 		}
 	}
 }
@@ -95,6 +94,6 @@ func main() {
 	newHashMap.add(002, "cx")
 	newHashMap.add(003, "gdy")
 	fmt.Println(newHashMap.get(001))
-	fmt.Println(newHashMap.getValue())
+	fmt.Println(newHashMap.getValues())
 	newHashMap.print()
 }

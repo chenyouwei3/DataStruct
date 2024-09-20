@@ -1,18 +1,5 @@
 package main
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
-func newTreeNode(v int) *TreeNode {
-	return &TreeNode{
-		Val:   v,
-		Left:  nil,
-		Right: nil,
-	}
-}
 func main() {
 	n0 := newTreeNode(8)
 	n1 := newTreeNode(4)

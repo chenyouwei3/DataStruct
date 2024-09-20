@@ -11,7 +11,8 @@ func main() {
 }
 
 func myAtoiTest0(s string) int {
-	result, sign, i, n := 0, 1, 0, len(s)
+	result, i, n := 0, 0, len(s)
+	sign := 1
 	for ; i < n && s[i] == ' '; i++ {
 	}
 	if i >= n {
